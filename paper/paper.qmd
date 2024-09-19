@@ -1,0 +1,50 @@
+---
+title: "Marriage"
+author: 
+  - Junbo Li
+thanks: "Code and data are available at: LINK."
+date: today
+date-format: long
+abstract: "To be created."
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+```{r}
+#| label: fig-cleandata
+#| echo: false
+#| tbl-cap: "ggplot"
+
+data <- read.csv(here::here("data/analysis_data/analysis_data.csv"))
+
+data$Year <- year(data$Date)
+
+# Step 5: Plot a bar plot of the cleaned data with only year on x-axis
+ggplot(data, aes(x = factor(Year), y = MARRIAGE_LICENSES, group = Year)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(title = "Number of Marriage Licenses by Year",
+       x = "Year",
+       y = "Marriage Licenses") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+In figure @fig-cleandata we can see that year 2020 marriage is the least. We used @citeR and data from @OT
+
+
+\newpage
+
+
+# References
+
+
